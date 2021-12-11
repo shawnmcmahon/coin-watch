@@ -15,7 +15,6 @@ const Coins = ({ coins, loading}) => {
         )
     });
     
-    
     return (
         <div>
             {mapCoins()}
