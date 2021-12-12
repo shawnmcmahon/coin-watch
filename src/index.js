@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App';
 import reportWebVitals from './reportWebVitals';
+import store from './store';
+import { bugAdded, bugResolved } from './actions';
+
+// store.dispatch(bugAdded("Bug1"))
+
+
+console.log(store.getState(), 'stated in index');
 
 ReactDOM.render(
   <React.StrictMode>

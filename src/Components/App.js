@@ -3,6 +3,8 @@ import axios from 'axios';
 import Coins from './Coins';
 import Pagination from './Pagination';
 import '../styles/styles.css';
+import store from '../store';
+import { bugAdded, bugResolved } from '../actions';
 
 const App = () => {
   const [coins, setCoins] = useState([]);
@@ -19,19 +21,29 @@ const App = () => {
       setLoading(false);
     }
 
+    const dataToStore = () => {
+      coins.map(coin => {
+        store.dispatch(bugAdded(`bug${coin.id}`))
+      })
+    }
+    //store.dispatch(bugAdded("Bug1"))
+
     fetchCoins()
+    dataToStore()
   }, [])
 
-  console.log(coins, 'hello')
+  console.log(store.getState(), "hi")
 
   // Get Current Posts 
   const indexOfLastPost = currentPage * postsPerPage; 
   const indexOfFirstPost = indexOfLastPost - postsPerPage; 
-  const currentCoins = coins.slice(indexOfFirstPost, indexOfLastPost)
+  const currentCoins = store.getState().slice(indexOfFirstPost, indexOfLastPost)
 
   // Change Page 
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber)
+  const data = store.getState()
+  console.log('the data', data)
 
   return (
     <div className="App">
