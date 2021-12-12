@@ -13,8 +13,8 @@ const App = () => {
   useEffect(() => {
     const fetchCoins = async () => {
       setLoading(true); 
-      const res = await axios.get('https://jsonplaceholder.typicode.com/posts') 
-      setCoins(res.data)
+      const res = await axios.get('https://api.coincap.io/v2/assets') 
+      setCoins(res.data.data)
       setLoading(false);
     }
 

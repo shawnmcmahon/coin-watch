@@ -9,14 +9,14 @@ const Coins = ({ coins, loading}) => {
     const mapCoins = () => coins.map(coin => {
         {console.log(coin)}
         return (
-            <div key={coin.id}> 
-           <p className="text-black"> {coin.title} "hi"</p>
-        </div>
+            <div key={coin.id} className="border m-1"> 
+                <p className="text-black">{coin.rank} {coin.name} {coin.priceUsd}</p>
+            </div>
         )
     });
     
     return (
-        <div>
+        <div className="table-auto">
             {mapCoins()}
         </div>
     )
